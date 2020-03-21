@@ -1,5 +1,5 @@
-SLT_EXIST_EMAIL = """
-SELECT email FROM users 
+SLT_USER = """
+SELECT email, password FROM users 
   WHERE email = $1;
 """
 

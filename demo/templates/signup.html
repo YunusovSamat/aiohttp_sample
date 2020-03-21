@@ -5,7 +5,7 @@
     <title>Signup</title>
 </head>
 <body>
-    <form action="{{ url('signup') }}" method="post" accept-charset="utf-8" enctype="application/x-www-form-urlencoded">
+    <form action="{{ url('signup') }}" method="post">
         <label>First name</label>
         <input type="text" name="name" placeholder="First name" value="">
         <label>Last name</label>
@@ -14,9 +14,7 @@
         <input name="email" type="email" placeholder="Email">
         <label>Password</label>
         <input name="password" type="password" placeholder="Password">
-        <button class="button is-success">
-            Signup
-        </button>
+        <button>Signup</button>
     </form>
 </body>
 </html>
