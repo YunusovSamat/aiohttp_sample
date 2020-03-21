@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Signup</title>
+</head>
+<body>
+    <form action="{{ url('signup') }}" method="post" accept-charset="utf-8" enctype="application/x-www-form-urlencoded">
+        <label>First name</label>
+        <input type="text" name="name" placeholder="First name" value="">
+        <label>Last name</label>
+        <input type="text" name="surname" placeholder="Last name" value="">
+        <label>Email</label>
+        <input name="email" type="email" placeholder="Email">
+        <label>Password</label>
+        <input name="password" type="password" placeholder="Password">
+        <button class="button is-success">
+            Signup
+        </button>
+    </form>
+</body>
+</html>

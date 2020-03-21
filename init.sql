@@ -1,6 +1,7 @@
-CREATE TABLE tmp (
-    id INTEGER,
-    name VARCHAR(20)
+CREATE TABLE users (
+    id_user SERIAL PRIMARY KEY,
+    email VARCHAR(40) UNIQUE NOT NULL,
+    name VARCHAR(30) NOT NULL,
+    surname VARCHAR(30) NOT NULL,
+    password VARCHAR(100) NOT NULL
 );
-
-INSERT INTO tmp (id, name) VALUES (1, 'Ivan');
