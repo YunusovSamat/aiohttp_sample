@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% set title = "My files" %}
+
+
+{% block body %}
+    <form action="{{ url('user_files') }}" method="post">
+        <input name="file" type="text" placeholder="File name" required>
+        <input name="url" type="text" placeholder="URL" required>
+        <button>Insert</button>
+    </form>
+    <br>
+    <table border="1" cellpadding="10">
+        <tr>
+            <td></td>
+            <td>File</td>
+            <td>URL</td>
+        </tr>
+        {% for line in files %}
+            <tr>
+                <td>{{ line.id_file }}</td>
+                <td>{{ line.file }}</td>
+                <td>{{ line.url }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

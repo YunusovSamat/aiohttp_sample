@@ -5,13 +5,14 @@ from aiohttp_session import get_session
 from . import modules
 
 
-@template('index.html')
-async def index(request):
-    session = await get_session(request)
-    context = dict()
-    if session.get('user'):
-        context['user'] = session.get('user')
-    return context
+class Index(web.View):
+    @template('index.html')
+    async def get(self):
+        session = await get_session(self)
+        context = dict()
+        if session.get('user'):
+            context['user'] = session.get('user')
+        return context
 
 
 class Login(web.View):
@@ -21,7 +22,8 @@ class Login(web.View):
 
     async def post(self):
         data = dict(await self.post())
-        if not all(data.values()):
+
+        if not all([data.get(k) for k in ['email', 'password']]):
             return web.HTTPFound(self.url)
 
         user = await modules.get_user_data(self.app['db'], data['email'])
@@ -37,7 +39,8 @@ class Login(web.View):
 
     async def patch(self):
         data = dict(await self.patch())
-        if not all(data.values()):
+
+        if not all([data.get(k) for k in ['old_passw', 'new_passw']]):
             return web.HTTPFound(self.app.router['index'].url_for())
 
         session = await get_session(self)
@@ -66,14 +69,14 @@ class Signup(web.View):
     async def post(self):
         data = dict(await self.post())
 
-        if not all(data.values()):
+        if not all([data.get(k) for k in ['email', 'name', 'surname', 'password']]):
             return web.HTTPFound(self.url)
 
         user = await modules.get_user_data(self.app['db'], data['email'])
         if user:
             return web.HTTPFound(self.url)
 
-        await modules.input_new_user(
+        await modules.insert_new_user(
             self.app['db'], data['email'], data['name'],
             data['surname'], data['password']
         )

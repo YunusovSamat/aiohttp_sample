@@ -17,7 +17,7 @@ def check_password(cur_passw: str, inc_passw: str) -> bool:
     return True if cur_passw == get_encrypt(inc_passw) else False
 
 
-async def input_new_user(db, email: str, name: str,
+async def insert_new_user(db, email: str, name: str,
                          surname: str, password: str):
     password = get_encrypt(password)
     async with db.acquire() as con:

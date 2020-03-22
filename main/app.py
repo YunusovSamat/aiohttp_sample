@@ -11,17 +11,6 @@ from aiohttp import web
 from .routes import setup_routers
 
 
-# @web.middleware
-# async def user_session_middleware(request, handler):
-#     request.session = await get_session(request)
-#     response = await handler(request)
-#     return response
-
-
-# def setup_middlewares(app):
-#     app.middlewares.append(user_session_middleware)
-
-
 async def create_app(config: dict):
     app = web.Application(debug=True)
 
