@@ -34,7 +34,7 @@ async def create_app(config: dict):
     app['config'] = config
     aiohttp_jinja2.setup(
         app,
-        loader=jinja2.PackageLoader('demo', 'templates')
+        loader=jinja2.PackageLoader('templates', '')
     )
 
     app.on_startup.append(on_start)

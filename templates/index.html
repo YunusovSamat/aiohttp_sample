@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% set title = "Main" %}
+
+{% block body %}
+
+    {% if user %}
+        <h3><a href="{{ url('logout') }}">logout</a></h3>
+        <br>
+<!--        <form action="{{ url('login') }}" method="patch">-->
+<!--            <input name="old_passw" type="password" placeholder="Old password" required>-->
+<!--            <input name="new_passw" type="password" placeholder="New password" required>-->
+<!--            <button>Change</button>-->
+<!--        </form>-->
+    {% else %}
+        <h3><a href="{{ url('login') }}">login</a></h3>
+        <h3><a href="{{ url('signup') }}">signup</a></h3>
+    {% endif %}
+
+    <h1>
+        Hello
+        {% if user %}
+            {{ user }}
+        {% else %}
+            anonymous
+        {% endif %}
+    </h1>
+
+{% endblock %}}

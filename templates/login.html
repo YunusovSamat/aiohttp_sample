@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% set title = "Login" %}
+
+
+{% block body %}
+    <form action="{{ url('login') }}" method="post">
+        <input name="email" type="email" placeholder="Email" required>
+        <input name="password" type="password" placeholder="Password" required>
+        <button>Login</button>
+    </form>
+{% endblock %}
