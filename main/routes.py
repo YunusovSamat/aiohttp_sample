@@ -17,3 +17,4 @@ def setup_routers(app):
 
     app.router.add_get('/user_files', UserFiles.get, name='user_files')
     app.router.add_post('/user_files', UserFiles.post)
+    # app.router.add_post('/user_files', UserFiles.delete)

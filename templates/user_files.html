@@ -4,12 +4,18 @@
 
 
 {% block body %}
+    <h3><a href="{{ url('index') }}">Main</a></h3>
+
     <form action="{{ url('user_files') }}" method="post">
         <input name="file" type="text" placeholder="File name" required>
         <input name="url" type="text" placeholder="URL" required>
         <button>Insert</button>
     </form>
     <br>
+    <form id="delete_files" action="{{ url('user_files') }}" method="post">
+        <button>Delete</button>
+    </form>
+
     <table border="1" cellpadding="10">
         <tr>
             <td></td>
@@ -18,7 +24,10 @@
         </tr>
         {% for line in files %}
             <tr>
-                <td>{{ line.id_file }}</td>
+                <td>
+                    <input form="delete_files" name="id_file"
+                           type="checkbox" value={{ line.id_file }}>
+                </td>
                 <td>{{ line.file }}</td>
                 <td>{{ line.url }}</td>
             </tr>

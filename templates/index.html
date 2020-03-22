@@ -13,6 +13,7 @@
 <!--            <button>Change</button>-->
 <!--        </form>-->
         <h1>Hello {{ user }}</h1>
+    <h3><a href="{{ url('user_files') }}">My files</a></h3>
 
     {% else %}
         <h3><a href="{{ url('login') }}">login</a></h3>

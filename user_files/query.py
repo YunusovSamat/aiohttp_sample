@@ -15,3 +15,9 @@ INS_FILE = """
 INSERT INTO files (id_user, file, url)
   VALUES ($1, $2, $3);
 """
+
+DLT_FILE = """
+DELETE FROM files 
+  WHERE id_user = $1 AND id_file = $2;
+"""
+
