@@ -16,11 +16,8 @@
         <button>Delete</button>
     </form>
     <br>
-    <form id="downloads_files" action="adfd" method="get">
-        <button>Downloads</button>
-    </form>
-    <br>
-
+    <input type="button" value="Downloads" onclick="downloads()">
+<!--    <a rel="nofollow" href="javascript:downloads()">Downloads</a>-->
     <table border="1" cellpadding="10">
         <tr>
             <td></td>
@@ -32,17 +29,33 @@
             <tr>
                 <td>
                     <input form="delete_files" name="id_file"
-                           type="checkbox" value={{ line.id_file }}>
+                           type="checkbox" value="{{ line.id_file }}">
                 </td>
                 <td>{{ line.file }}</td>
                 <td>
                     <a href="{{ line.url }}"
-                    target="_blank">{{ line.url }}</a>
+                    target="_top">{{ line.url }}</a>
                 </td>
                 <td>
-                    <a href="{{ line.url_download }}" download>download</a>
+                    <a id="{{ line.id_file }}" href="{{ line.url_download }}"
+                       download>download</a>
                 </td>
             </tr>
         {% endfor %}
     </table>
+
+    <script>
+        function downloads() {
+            const chbox_array = document.querySelectorAll('input[type=checkbox]');
+            let i = 0;
+            for (; i < chbox_array.length; i++) {
+                let check = chbox_array[i];
+                if (check.checked) {
+                    let id_file = check.value;
+                    let link = document.getElementById(id_file);
+                    window.open(link.href);
+                }
+            }
+        }
+    </script>
 {% endblock %}

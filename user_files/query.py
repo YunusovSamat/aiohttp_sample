@@ -1,5 +1,5 @@
 SLT_FILES = """
-SELECT f.file, url, url_download
+SELECT f.id_file, f.file, url, url_download
   FROM (
     SELECT id_user FROM users
       WHERE email = $1
