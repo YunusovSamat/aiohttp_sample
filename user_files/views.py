@@ -25,6 +25,10 @@ class UserFiles(web.View):
         if not all([data.get(k) for k in ['file', 'url']]):
             return web.HTTPFound(self.url)
 
+        if not modules.check_valid_url(data['url']):
+            print('Bad url')
+            return web.HTTPFound(self.url)
+
         await modules.insert_file(self.app['db'], session['user'],
                                   data['file'], data['url'])
 

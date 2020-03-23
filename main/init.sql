@@ -13,5 +13,6 @@ CREATE TABLE files (
     id_file SERIAL PRIMARY KEY,
     id_user INT REFERENCES users (id_user),
     file VARCHAR(40) NOT NULL,
-    url TEXT NOT NULL
+    url VARCHAR(150) NOT NULL,
+    url_download VARCHAR(150) NOT NULL
 )

@@ -15,12 +15,18 @@
     <form id="delete_files" action="{{ url('user_files') }}" method="post">
         <button>Delete</button>
     </form>
+    <br>
+    <form id="downloads_files" action="adfd" method="get">
+        <button>Downloads</button>
+    </form>
+    <br>
 
     <table border="1" cellpadding="10">
         <tr>
             <td></td>
             <td>File</td>
             <td>URL</td>
+            <td>Download</td>
         </tr>
         {% for line in files %}
             <tr>
@@ -29,7 +35,13 @@
                            type="checkbox" value={{ line.id_file }}>
                 </td>
                 <td>{{ line.file }}</td>
-                <td>{{ line.url }}</td>
+                <td>
+                    <a href="{{ line.url }}"
+                    target="_blank">{{ line.url }}</a>
+                </td>
+                <td>
+                    <a href="{{ line.url_download }}" download>download</a>
+                </td>
             </tr>
         {% endfor %}
     </table>

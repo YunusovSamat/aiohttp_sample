@@ -1,5 +1,5 @@
 SLT_FILES = """
-SELECT f.id_file, f.file, f.url 
+SELECT f.file, url, url_download
   FROM (
     SELECT id_user FROM users
       WHERE email = $1
@@ -12,12 +12,12 @@ SELECT id_user FROM users
 """
 
 INS_FILE = """
-INSERT INTO files (id_user, file, url)
-  VALUES ($1, $2, $3);
+INSERT INTO files (id_user, file, url, url_download)
+  VALUES ($1, $2, $3, $4);
 """
 
 DLT_FILE = """
 DELETE FROM files 
-  WHERE id_user = $1 AND id_file = $2;
+  WHERE id_file = $1 AND id_user = $2; 
 """
 
