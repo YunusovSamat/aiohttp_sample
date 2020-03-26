@@ -25,6 +25,8 @@ class UserFiles(web.View):
         if not all([data.get(k) for k in ['file', 'url']]):
             return web.HTTPFound(self.url)
 
+        data['url'] = modules.get_redirect_url(data['url'])
+
         if not modules.check_valid_url(data['url']):
             print('Bad url')
             return web.HTTPFound(self.url)

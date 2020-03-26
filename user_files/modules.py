@@ -1,6 +1,12 @@
 import re
+import requests
 
 from . import query
+
+
+def get_redirect_url(url: str) -> str:
+    response = requests.get(url)
+    return response.url
 
 
 def generate_url_download(url: str) -> str:
